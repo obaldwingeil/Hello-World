@@ -2,7 +2,9 @@ package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // links the activity to the xml layout called activity main
 
+        // Debugging and Error finding:
+        // create logs to keep track of errors
+        Log.d("MainActivity", "I was not able to see the toast when clicking the button");
+        // d means "debugging", can also log as error, information, etc.
+        // tag -> location where this is found
+        // msg -> log information, what happened
+
         // look up the button by its ID
         button_hi = findViewById(R.id.button_hello);
         textView_count = findViewById(R.id.textView_count);
@@ -32,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // handle what happens after I click
-                sayHello(v);
+                // sayHello(v);
+                launchNextActivity(v);
             }
         });
         // when click happens, do something
@@ -54,4 +64,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void launchNextActivity(View view){
+        // create an intent
+        // specify from and to
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
+    }
+
+
 }
